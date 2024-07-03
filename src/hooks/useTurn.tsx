@@ -15,7 +15,7 @@ export function useTurn () {
         boardClone[index] = currentTurn.description
         setBoard(boardClone)
 
-        setWinner(calculateWinner(boardClone))
+        setWinner(calculateWinner(boardClone)) // The argument is the clone. setBoard is asynchronous and it can be a problem
 
         const changedTurn = currentTurn === TURN.o ? TURN.x : TURN.o
         setCurrentTurn(changedTurn)
