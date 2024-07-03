@@ -1,3 +1,4 @@
+import { TURN } from "../constants"
 import { useTurn } from "../hooks/useTurn"
 import Square from "./Square"
 
@@ -8,19 +9,30 @@ function Board() {
     return (
         <>
             <div className="board">
-                {
-                    board.map((square, index) => (
-                        <Square handleTurn={setTurn} indexTurn={index} key={index}>
-                            {square}
-                        </Square>)
-                    )
-                }
+                
+                    {
+                        board.map((square, index) => (
+                            <Square 
+                                handleTurn={setTurn}
+                                indexTurn={index} 
+                                key={index}>
+                                {square}
+                            </Square>)
+                        )
+                    }
+               
+            </div>
+            <div className="players">
+                <Square isSelected={player === TURN.x.description} indexTurn={9999}>
+                    {TURN.x.description}
+                </Square>
+                <Square isSelected={player === TURN.o.description} indexTurn={99999}>
+                    {TURN.o.description}
+                </Square>
             </div>
             <div>
                 {
-                    winner
-                    ? `Gana ${winner}`
-                    : `Juega ${player}`
+                    winner && `Gana ${winner}`
                 }
             </div>
         </>
