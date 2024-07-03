@@ -1,15 +1,16 @@
 type Props = {
     children: React.ReactNode,
     indexTurn: number,
-    handleTurn: (indexTurn: number) => void
+    handleTurn?: (indexTurn: number) => void
+    isSelected?: boolean
 }
 
-function Square({ handleTurn, indexTurn, children }: Props) {
+function Square({ handleTurn, indexTurn, isSelected, children }: Props) {
     const handleClick = () => {
-        handleTurn(indexTurn)
+        if (handleTurn) handleTurn(indexTurn)
     }
     return (
-        <div onClick={handleClick}>
+        <div onClick={handleClick} className={isSelected ? 'square is-selected' : 'square'}>
             {children}
         </div>
     )
