@@ -5,6 +5,9 @@
   text-align: center;
 }
 
+body {
+  background-color: rgb(199, 165, 165);
+}
 
 .board {
  
@@ -22,15 +25,21 @@
     margin-top: 10px;
     display: grid;
     grid: 10px;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 25% 25%;
+    place-content: center;
   }
   .square {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 99, 71);
+    align-items: center;   
+    aspect-ratio: 1 / 1;
+    border: 1px solid;
   &.is-selected {
-    background-color: rgb(34, 33, 32);
-    color: white;
+    background-color: rgb(19, 18, 18);
+    color: white;    
   }
+}
+
+.btn {
+  margin: 1rem;
 }
