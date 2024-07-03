@@ -1,4 +1,4 @@
 export const TURN = {
-    x: Symbol('X'),
-    o: Symbol('O')
+  x: Symbol('X'),
+  o: Symbol('O')
 }
