@@ -2,9 +2,22 @@ import { useEffect, useState } from 'react'
 import { calculateWinner } from '../helpers/calculate-winner'
 import { TURN } from '../constants'
 
+function clearLocalStorage () {
+  localStorage.removeItem('board')
+  localStorage.removeItem('turn')
+}
+
 export function useTurn () {
-  const [board, setBoard] = useState(Array(9).fill(null))
-  const [currentTurn, setCurrentTurn] = useState(TURN.x)
+  const [board, setBoard] = useState(() => {
+    const boardStorage = localStorage.getItem('board')
+    return boardStorage === null ? Array(9).fill(null) : JSON.parse(boardStorage)
+  })
+  const [currentTurn, setCurrentTurn] = useState(() => {
+    const turnStorage = localStorage.getItem('turn')
+    return turnStorage === null
+      ? TURN.x
+      : turnStorage === TURN.x.description ? TURN.o : TURN.x
+  })
   const [winner, setWinner] = useState<string | null>(null)
   const [isBoardComplete, setIsBoardComplete] = useState(false)
 
@@ -13,8 +26,10 @@ export function useTurn () {
   }, [])
 
   useEffect(() => {
-    const boardComplete = () => board.every(item => item !== null)
+    const boardComplete = () => board.every((item: null) => item !== null)
     setIsBoardComplete(boardComplete())
+    const isWinner = calculateWinner(board)
+    setWinner(isWinner)
   }, [board])
 
   const setTurn = (index: number) => {
@@ -24,10 +39,11 @@ export function useTurn () {
     boardClone[index] = currentTurn.description
     setBoard(boardClone)
 
-    const isWinner = calculateWinner(boardClone) // avoid asynchronism
-    setWinner(isWinner)
+    localStorage.setItem('board', JSON.stringify(boardClone))
+    localStorage.setItem('turn', currentTurn.description as string)
 
-    if (isWinner) return
+    if (winner) return
+
     const changedTurn = currentTurn === TURN.o ? TURN.x : TURN.o
     setCurrentTurn(changedTurn)
   }
@@ -37,6 +53,7 @@ export function useTurn () {
     setCurrentTurn(TURN.x)
     setWinner(null)
     setIsBoardComplete(false)
+    clearLocalStorage()
   }
 
   return {
