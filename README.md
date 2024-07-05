@@ -7,6 +7,6 @@ Deployment in [Netlify](https://webferrol-tictactoe.netlify.app/)
 
 ## Features
 
-- React libray (TypeScript)
+- React library (TypeScript)
 - Hooks (useState, useEffect)
 - LocalStorage
