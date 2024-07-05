@@ -2,14 +2,14 @@ import React from 'react'
 
 type Props = {
     children: React.ReactNode,
-    indexTurn: number,
+    indexTurn?: number,
     handleTurn?: (indexTurn: number) => void
     isSelected?: boolean
 }
 
 function Square ({ handleTurn, indexTurn, isSelected, children }: Props) {
   const handleClick = () => {
-    if (handleTurn) handleTurn(indexTurn)
+    if (handleTurn && indexTurn !== undefined) handleTurn(indexTurn)
   }
   return (
         <div onClick={handleClick} className={isSelected ? 'square is-selected' : 'square'}>

@@ -19,10 +19,12 @@ function Board () {
   return (
         <>
             <section>
-                <h1>Tic tac toe</h1>
+                <h1>
+                    {winner ? `Gana ${winner}` : 'Tic tac toe'}
+                </h1>
                 <div className="board">
                     {
-                        board.map((square, index) => (
+                        board.map((square: number, index: number) => (
                             <Square
                                 handleTurn={setTurn}
                                 indexTurn={index}
@@ -34,10 +36,10 @@ function Board () {
                 </div>
 
                 <div className="players">
-                    <Square isSelected={player === TURN.x.description} indexTurn={-1}>
+                    <Square isSelected={player === TURN.x.description}>
                         {TURN.x.description}
                     </Square>
-                    <Square isSelected={player === TURN.o.description} indexTurn={-2}>
+                    <Square isSelected={player === TURN.o.description}>
                         {TURN.o.description}
                     </Square>
                 </div>

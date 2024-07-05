@@ -15,6 +15,7 @@ body {
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
+    min-width: 300px;
     aspect-ratio: 1 / 1;
     .square {     
       cursor: pointer;
