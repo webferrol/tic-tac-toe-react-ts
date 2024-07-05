@@ -1,6 +1,6 @@
 # Tic tac toe
 
-Deployment in [Netlify](https://webferrol-tictactoe.netlify.app/)
+Deployment on [Netlify](https://webferrol-tictactoe.netlify.app/)
 
 ![image](https://github.com/webferrol/tic-tac-toe-react-ts/assets/35032717/942dfa54-8c33-495e-9e26-6a17f3719349)
 
@@ -9,4 +9,4 @@ Deployment in [Netlify](https://webferrol-tictactoe.netlify.app/)
 
 - React library (TypeScript)
 - Hooks (useState, useEffect)
-- LocalStorage
+- window.localStorage
