@@ -3,6 +3,7 @@ import { useTurn } from '../hooks/useTurn'
 import { TURN } from '../constants'
 import Snow from 'react-canvas-confetti/dist/presets/snow'
 import '../App.css'
+import MouseMoveComponent from './MouseMoveComponent'
 
 function Board () {
   const {
@@ -18,6 +19,7 @@ function Board () {
 
   return (
         <>
+            <MouseMoveComponent icon={player} />
             <section>
                 <h1>
                     {winner ? `Gana ${winner}` : 'Tic tac toe'}
